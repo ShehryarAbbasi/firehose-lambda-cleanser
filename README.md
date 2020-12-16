@@ -6,8 +6,8 @@ Normally, when data is sent to Kinesis Data Firehose, there is some amount of cl
 ### Info: 
 a simple lambda based cleanser which can receive and cleanse Kinesis Firehose data:
 - `input data`: base64 JSON data
-- `index.js`: converts base64 to utf-8, then recursively iterates over and deletes certain Keys from a JSON payload, regardless of nesting depth or array/obj type, based on the control file
-- `control file`: properties-to-delete.json file, specify which Keys need to be removed
+- `main logic`: src/index.js converts base64 to utf-8, then recursively iterates over and deletes certain Keys from a JSON payload, regardless of nesting depth or data type, based on the control file
+- `control file`: src/properties-to-delete.json file, specify which Keys need to be removed
 - `output data`: base64 JSON data with Keys removed
 - `use-cases`: cleanse unnecessary or unwanted Keys from original payload
 - `adjustments`: if newline or return chars are in the dataset stream, then a simple regex can clean the data BEFORE it is sent in or WITHIN this Key cleanser function: after the String operation under base64 to utf8 translation, for example, in `src/index.js` just update the toUtf8 encoding operation:
@@ -20,3 +20,4 @@ const toUtf8 = async (record) => {
         return record;
     };
 ``` 
+- `test`: the test dir has a few files to demo the cleansing functionality, including a simple python based JSON -> Base64 String encoder in the test/utf8-to-base64-converter.py file. The plaintext JSON source of this dataset is in the utf8-example-payload.json, output of the base64 encoder is in the test/base64-event-record.json. Since the main file is in Javascript, just invoke `npm install && npm test` from the root of this repo to install chai/mocha and see the input/output logged to stdout.
