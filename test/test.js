@@ -6,7 +6,7 @@ const expect = chai.expect;
 
 
 const lambda = require('../src/index.js');
-const event = require('./base64_event_record.json')
+const event = require('./base64-event-record.json')
 
 // Test the end-to-end flow of cleanser function
 describe('entire flow', () => {
