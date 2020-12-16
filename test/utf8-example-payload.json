@@ -1,0 +1,59 @@
+{
+      "timestamp": "2020-08-12T11:59:18.296-06:00",
+      "message_type": "COMIC",
+      "record_id": "MVU",
+      "team_of_heroes": [
+        {
+          "id": "112",
+          "bio": {
+            "name": "CAPTAIN",
+            "power": "SUPERSOLDIER",
+            "special": "SHIELD",
+            "level": 10,
+            "classifiers": {"type": "human","colors": ["red","white","blue"], "origin": "USA"}
+          }
+        },
+        {
+            "id": "113",
+            "bio": {
+              "name": "INCREDIBLE",
+              "power": "STRENGTH",
+              "special": "TRANSFORM",
+              "level": 14,
+              "classifiers": {"type": "human","colors": ["green"], "origin": "USA"}
+            }
+        },
+        {
+            "id": "113",
+            "bio": {
+              "name": "IRON",
+              "power": "TECH",
+              "special": "FLIGHT",
+              "level": 13,
+              "classifiers": {"type": "human","colors": ["red","gold"], "origin": "USA"}
+            }
+        }
+      ],
+      "team_of_villains": [
+        {
+          "id": "012",
+          "bio": {
+            "name": "SKULL",
+            "power": "STRENGTH",
+            "special": "RED",
+            "level": 19,
+            "classifiers": {"type": "human","colors": ["red"], "origin": "GERMANY"}
+          }
+        },
+        {
+            "id": "014",
+            "bio": {
+              "name": "THANOS",
+              "power": "EVERYTHING",
+              "special": "INFINITYSTONES",
+              "level": 50,
+              "classifiers": {"type": "titan","colors": ["purple","gold"], "origin": "TITAN"}
+            }
+        }
+      ]
+}
