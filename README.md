@@ -1,7 +1,7 @@
 # firehose-lambda-cleanser
 
 ### TL;DR:
-a use-case for programmatic recursion: cleaning PII data when supplied with a JSON Object (dictionary) containing child Keys and child Lists/Arrays where certain Keys must be deleted completely, regardless of depth.
+a use-case for programmatic recursion: cleaning PII data when supplied with a JSON Object (dictionary) containing nested child Keys where certain Keys must be deleted completely, regardless of depth.
 
 ### Background:
 Normally, when data is sent to Kinesis Data Firehose, there is some amount of cleanup or ETL required. This can be done `AFTER` the data is sent to a Destination (such as S3) via Glue or EMR or another Batch process, or `IN-LINE` based on the Firehose-Lambda integration. This example code explores this latter option, with a simple use-case of cleaning unwanted/unnecessary Keys given an input HashMap. As you may already know, Kinesis Firehose accepts incoming data as Base64 encoded; therefore, this example code converts it to UTF-8 first (feel free to convert to another encoding), then recursively does the cleanup as it looks for the specified Keys within the HashMap (JSON). The cleanup is based on a simple Array of Keys provided in a file so that it can be adjusted outside of the main ETL logic. An alternative approach would be to use this cleanup file as Lambda Layer or store it in EFS to make it available "locally" within the function. Another alternative would be to store this cleanup data structure in AWS AppConfig, which is then polled by the Lambda function upon initialization for changes; in order to further decouple ETL logic from its configuration and develop, deploy, and maintain both of these entities separately. 
